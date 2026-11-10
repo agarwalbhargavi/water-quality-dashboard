@@ -57,10 +57,4 @@ The test sample persists to `data/readings.jsonl`. Delete that file with the ser
 - Temperature missing: check DS18B20 power and a typical 4.7 kΩ pull-up from data to 3.3V.
 - Analog inputs must never exceed ESP32 safe input voltage. Check sensor module output range, grounding, and calibration.
 
-## Measurement cautions
-- The provided turbidity code reports **raw ADC and millivolts**, NOT NTU. The dashboard intentionally does not fabricate NTU. Calibrate your sensor and implement a conversion before reporting NTU.
-- The supplied TDS polynomial is an approximate formula for compatible probes and **not a validated seawater salinity/TDS measurement**. Marine water near 35,000 ppm exceeds the useful range of many low-cost TDS probes. Verify sensor range and calibrate for your environment.
-- pH calibration voltages are example values; perform actual buffer calibration. The dashboard's alert rules are provisional, not regulatory thresholds.
-- The firmware uses non-blocking DS18B20 conversion setup; the first measurement may be unavailable until conversion completes. Repeated POST requests every ~2 seconds may briefly pause GPS parsing; UART buffer is increased to reduce dropped bytes.
-- For deployment beyond a trusted local network, add authentication, TLS, rate limiting and database retention policies.
-# water-quality-dashboard
+
